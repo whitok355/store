@@ -1,0 +1,58 @@
+@import './variables'
+@import './mixin'
+
+.container
+    max-width: 1140px
+    margin: 0 auto
+.hidden
+    display: none
+h2
+    font-size: 18px
+    font-weight: 700
+h3
+    font-size: 19px
+h4
+    font-size: 16px
+h5
+    font-size: 16px
+    color: $darkPink
+p
+    font-size: 1.1em
+a
+    text-decoration: none
+    color: $dark
+a:hover
+    cursor: pointer
+    border-bottom: 1px solid $dark
+.soc-link
+  width: 32px
+  height: 30px
+  background: $whiteMilk
+  display: flex
+  justify-content: center
+  align-items: center
+  transition: 0.3s
+.soc-link:not(:last-child)
+  margin-right: 10px
+.soc-link svg
+    fill: black
+.soc-link:hover
+  background: $darkPink
+  transform: scale(1.2)
+  border-radius: 3px
+.soc-link:hover svg
+  fill: $whiteMilk
+.wrapper-main
+  padding: 33px 8px 64px
+  background: $whiteMilk
+  min-height: 70vh
+@include tablet
+    .wrapper-main
+        padding: 100px 16px 65px
+        box-sizing: border-box
+@include screen
+    h2
+        font-size: 26px
+    .wrapper-main
+        padding: 100px 0
+

@@ -1,0 +1,107 @@
+@font-face {
+  font-family: 'Lato';
+  src: url(~@/assets/fonts/Lato-Black.ttf);
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url(~@/assets/fonts/Lato-Bold.ttf);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url(~@/assets/fonts/Lato-Light.ttf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url(~@/assets/fonts/Lato-Regular.ttf);
+  font-weight: 400;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 19px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 16px;
+  color: #F16D7F;
+}
+
+p {
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+  color: #222222;
+}
+
+a:hover {
+  cursor: pointer;
+  border-bottom: 1px solid #222222;
+}
+
+.soc-link {
+  width: 32px;
+  height: 30px;
+  background: #E5E5E5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.soc-link:not(:last-child) {
+  margin-right: 10px;
+}
+
+.soc-link svg {
+  fill: black;
+}
+
+.soc-link:hover {
+  background: #F16D7F;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  border-radius: 3px;
+}
+
+.soc-link:hover svg {
+  fill: #E5E5E5;
+}
+
+@media (min-width: 1140px) {
+  h2 {
+    font-size: 26px;
+  }
+}
+/*# sourceMappingURL=main.css.map */
