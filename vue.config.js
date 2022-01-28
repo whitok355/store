@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-  // publicPath: process.env.NODE_ENV === 'production'
-  // ? '/store/'
-  // : '/',
+  publicPath: process.env.NODE_ENV === 'production'
+  ? '/store/'
+  : '/',
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'sass',
