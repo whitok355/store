@@ -1,7 +1,7 @@
 <template>
   <div class="icon-cart">
     <div :class="visible ? 'hidden' : 'icon-cart__circle'">
-      {{ this.$store.state.counterGoods }}
+      {{ counterGoods }}
     </div>
     <svg
       width="33"
@@ -18,6 +18,7 @@
   </div>
 </template>
 <script>
+import { mapState} from 'vuex'
 export default {
   name: "iconCart",
   props: {
@@ -26,6 +27,11 @@ export default {
       dafault: true,
     },
   },
+  computed: {
+    ...mapState({
+      counterGoods: state => state.goodsModule.counterGoods
+    })
+  }
 };
 </script>
 <style lang="sass" scoped>

@@ -5,14 +5,14 @@
         <h2>SHOPPING CART</h2>
         <div class="cart-list">
           <div class="wrapper-good-cart">
-            <goodCart />
+            <goodCart :goods="cartGoods"/>
           </div>
         </div>
         <div class="cart-btn">
           <buttons :text="'Clear shopping cart'" :classBtn="'grey-button'" />
-          <router-link to="/catalog/"
-            ><buttons :text="'Continue shopping'" :classBtn="'grey-button'"
-          /></router-link>
+          <router-link to="/catalog/">
+          <buttons :text="'Continue shopping'" :classBtn="'grey-button'"/>
+          </router-link>
         </div>
       </div>
     </div>
@@ -21,9 +21,15 @@
 <script>
 import goodCart from "../elements/goodCart";
 import buttons from "../elements/buttons";
+import { mapState } from 'vuex';
 export default {
   name: "cart",
   components: { goodCart, buttons },
+  computed: {
+    ...mapState({
+      cartGoods: state => state.goodsModule.cartGoods,
+    })
+  }
 };
 </script>
 <style lang="sass" scoped>

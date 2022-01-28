@@ -1,21 +1,22 @@
 <template>
   <div class="category-list">
-    <div class="category-list__box"><h4 @click="filtered('fetured')">FETURED</h4></div>
-    <div class="category-list__box"><h4 @click="filtered('men')">MEN</h4></div>
-    <div class="category-list__box"><h4 @click="filtered('women')">WOMEN</h4></div>
-    <div class="category-list__box"><h4 @click="filtered('kids')">KIDS</h4></div>
-    <div class="category-list__box">
-      <h4 @click="filtered('accesories')">ACCESORIES</h4>
-    </div>
+    <div class="category-list__box"><h4 @click="filteredActions('fetured')">FETURED</h4></div>
+    <div class="category-list__box"><h4 @click="filteredActions('men')">MEN</h4></div>
+    <div class="category-list__box"><h4 @click="filteredActions('women')">WOMEN</h4></div>
+    <div class="category-list__box"><h4 @click="filteredActions('kids')">KIDS</h4></div>
+    <div class="category-list__box"><h4 @click="filteredActions('accesories')">ACCESORIES</h4></div>
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: "categoryList",
   methods: {
-    filtered(category) {
-      this.$emit("filtered", category);
-    },
+    ...mapActions(['filtered']),
+    filteredActions(category){
+      this.filtered(category)
+    }
   },
 };
 </script>

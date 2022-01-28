@@ -27,6 +27,4 @@ export default {
   padding: 8px 17px
   font-size: 12px
   color: $darkGrey
-.button:hover
-  cursor: pointer
 </style>

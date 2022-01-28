@@ -2,7 +2,7 @@
   <div v-for="item of items" :key="item.title" class="good">
     <div class="good-show">
       <div class="shadow">
-        <div class="shadow-btn" @click="addGood(item)">
+        <div class="shadow-btn" @click="addGoodActions(item)">
           <iconCart :visible="true" />
           <p>{{ text }}</p>
         </div>
@@ -18,6 +18,7 @@
 </template>
 <script>
 import iconCart from "../icons/icon-cart";
+import { mapActions } from 'vuex'
 export default {
   name: "good",
   components: { iconCart },
@@ -37,14 +38,12 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['addGood']),
+    addGoodActions(item){
+      this.addGood(item)
+    },
     generationImage(good) {
       return require(`../../assets/pictures/goods/${good.id}.png`);
-    },
-    changeVisible() {
-      this.paramVisible = !this.paramVisible;
-    },
-    addGood(item) {
-      this.$store.dispatch("addGood", item);
     },
   },
 };
@@ -87,6 +86,8 @@ export default {
   display: flex
   padding: 10px 13px
   align-items: center
+.shadow-btn:hover
+  cursor: pointer
 .shadow-btn p
   margin-left: 11px
   color: $whiteMilk

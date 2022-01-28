@@ -2,7 +2,7 @@
   <div class="wrapper-service">
     <div class="container">
       <div class="services">
-        <template v-for="(item, i) of this.$store.state.serviceArr" :key="i">
+        <template v-for="(item, i) of services" :key="i">
           <div class="service">
             <img class="setvice__icon" :src="generationUrl(item)" :alt="item.title" />
             <h3>{{ item.title }}</h3>
@@ -14,6 +14,7 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   name: "services",
   methods: {
@@ -21,6 +22,11 @@ export default {
       return require(`../assets/icons/${item.icon}.svg`);
     },
   },
+  computed:{
+    ...mapState({
+      services: state => state.servicesModule.services
+    })
+  }
 };
 </script>
 <style lang="sass" scoped>

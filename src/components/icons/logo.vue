@@ -1,6 +1,6 @@
 <template>
+<router-link class="logo" to="/">
   <svg
-    class="logo"
     width="44"
     height="38"
     viewBox="0 0 44 38"
@@ -21,6 +21,7 @@
       />
     </defs>
   </svg>
+</router-link>
 </template>
 <script>
 export default {

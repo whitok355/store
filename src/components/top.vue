@@ -7,10 +7,10 @@
           <search />
         </div>
         <div class="top-block">
-          <burger @click="changeVisible('navVisible')" />
+          <burger @click="changeVisibleActions('navVisible')" />
           <navigation />
-          <acc @click="changeVisible('logVisible')" />
-          <iconCart @click="changeVisible('cartVisible')" />
+          <acc @click="changeVisibleActions('logVisible')" />
+          <iconCart @click="changeVisibleActions('cartVisible')" />
           <cartMini />
         </div>
       </div>
@@ -25,12 +25,15 @@ import acc from "./icons/acc";
 import iconCart from "./icons/icon-cart";
 import navigation from "./elements/navigation";
 import cartMini from "./cart/mini-cart";
+import { mapActions } from 'vuex';
+
 export default {
   name: "top",
   components: { logo, search, burger, acc, iconCart, navigation, cartMini },
   methods: {
-    changeVisible(value) {
-      this.$store.dispatch("changeVisible", value);
+    ...mapActions(['changeVisible']),
+    changeVisibleActions(value) {
+      this.changeVisible(value)
     },
   },
 };

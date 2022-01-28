@@ -1,22 +1,22 @@
 <template>
   <div :class="this.$store.state.navVisible ? 'hidden' : 'navigation'">
     <div class="close">
-      <close @click="changeVisible('navVisible')" />
+      <close @click="changeVisibleActions('navVisible')" />
     </div>
     <div class="content">
       <h2>NAVIGATION</h2>
       <ul>
         <li>
-          <a @click="changeVisible" href="/">Home</a>
+          <a href="/">Home</a>
         </li>
         <li>
-          <a @click="changeVisible" href="/login/">Account</a>
+          <a href="/login/">Account</a>
         </li>
         <li>
-          <a @click="changeVisible" href="/catalog/">Catalog</a>
+          <a href="/catalog/">Catalog</a>
         </li>
         <li>
-          <a @click="changeVisible" href="/cart/">Cart</a>
+          <a href="/cart/">Cart</a>
         </li>
       </ul>
     </div>
@@ -24,12 +24,15 @@
 </template>
 <script>
 import close from "../icons/close";
+import { mapActions } from 'vuex';
+
 export default {
   name: "navigation",
   components: { close },
   methods: {
-    changeVisible(value) {
-      this.$store.dispatch("changeVisible", value);
+    ...mapActions(['changeVisible']),
+    changeVisibleActions(value){
+      this.changeVisible(value)
     },
   },
 };
