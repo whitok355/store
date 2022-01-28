@@ -7,16 +7,16 @@
       <h2>NAVIGATION</h2>
       <ul>
         <li>
-          <a href="/">Home</a>
+          <router-link to="/">Home</router-link>
         </li>
         <li>
-          <a href="/login/">Account</a>
+          <router-link to="/login/">Account</router-link>
         </li>
         <li>
-          <a href="/catalog/">Catalog</a>
+          <router-link to="/catalog/">Catalog</router-link>
         </li>
         <li>
-          <a href="/cart/">Cart</a>
+          <router-link to="/cart/">Cart</router-link>
         </li>
       </ul>
     </div>
