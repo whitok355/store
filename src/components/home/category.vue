@@ -2,7 +2,7 @@
   <div class="container">
     <div class="category">
       <template v-for="(item, index) of category" :key="index">
-        <router-link to="/catalog/" class="category-box">
+        <router-link to="/catalog/" class="category-box" @click="filteredActions(item.title)">
           <img :src="imageGenerator(item)" :alt="item.title" />
           <div class="category-box-content">
             <h3>{{ item.text }}</h3>
@@ -14,10 +14,14 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: "category",
   methods: {
+    ...mapActions(['filtered']),
+    filteredActions(category){
+      this.filtered(category)
+    },
     imageGenerator(item) {
       return require(`../../assets/pictures/category/${item.title}.png`);
     },

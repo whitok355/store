@@ -13,9 +13,19 @@ import top from "./components/top";
 import services from "./components/services";
 import subscribe from "./components/subscribe";
 import bottom from "./components/footer/footer";
+import { mapActions } from "vuex";
 export default {
   name: "App",
   components: { top, services, subscribe, bottom },
+  beforeMount() {
+    this.getCartGoodsActions();
+  },
+  methods: {
+    ...mapActions(["getCartGoods"]),
+    getCartGoodsActions() {
+      this.getCartGoods();
+    },
+  },
 };
 </script>
 

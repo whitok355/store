@@ -1,5 +1,5 @@
 <template>
-  <div class="good-cart" v-for="(item,i) of goods" :key="i">
+  <div class="good-cart" v-for="(item, i) in goods" :key="i">
     <div class="good-image"><img :src="generationImage(item)" :alt="item.title" /></div>
     <div class="good-info">
       <h5>MANGO PEOPLE T-SHIRT</h5>
@@ -18,24 +18,24 @@
         </p>
       </div>
     </div>
-    <close @click="removeGoodActions(item)"/>
+    <close @click="removeGoodActions(item)" />
   </div>
 </template>
 <script>
 import close from "../icons/close";
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
   name: "good",
-  props: {
-    goods:{
-      type: Array,
-    }
-  },
   components: { close },
+  props: {
+    goods: {
+      type: Array,
+    },
+  },
   methods: {
-    ...mapActions(['removeGood']),
-    removeGoodActions(item){
-      this.removeGood(item)
+    ...mapActions(["removeGood"]),
+    removeGoodActions(item) {
+      this.removeGood(item);
     },
     generationImage(item) {
       return require(`../../assets/pictures/goods/${item.id}.png`);

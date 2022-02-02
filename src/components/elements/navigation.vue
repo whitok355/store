@@ -1,5 +1,5 @@
 <template>
-  <div :class="this.$store.state.navVisible ? 'hidden' : 'navigation'">
+  <div :class="visibleValue ? 'hidden' : 'navigation'">
     <div class="close">
       <close @click="changeVisibleActions('navVisible')" />
     </div>
@@ -7,16 +7,16 @@
       <h2>NAVIGATION</h2>
       <ul>
         <li>
-          <router-link to="/">Home</router-link>
+          <router-link @click="changeVisibleActions('navVisible')" to="/">Home</router-link>
         </li>
         <li>
-          <router-link to="/login/">Account</router-link>
+          <router-link @click="changeVisibleActions('navVisible')" to="/login/">Account</router-link>
+        </li>
+        <li @click="filteredActions('fetured')">
+          <router-link @click="changeVisibleActions('navVisible')" to="/catalog/">Catalog</router-link>
         </li>
         <li>
-          <router-link to="/catalog/">Catalog</router-link>
-        </li>
-        <li>
-          <router-link to="/cart/">Cart</router-link>
+          <router-link @click="changeVisibleActions('navVisible')" to="/cart/">Cart</router-link>
         </li>
       </ul>
     </div>
@@ -24,17 +24,25 @@
 </template>
 <script>
 import close from "../icons/close";
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "navigation",
   components: { close },
   methods: {
-    ...mapActions(['changeVisible']),
+    ...mapActions(['changeVisible', 'filtered']),
     changeVisibleActions(value){
       this.changeVisible(value)
     },
+    filteredActions(category){
+      this.filtered(category)
+    }
   },
+  computed: {
+    ...mapState({
+      visibleValue: state => state.visibleModule.navVisible
+    })
+  }
 };
 </script>
 <style lang="sass" scoped>

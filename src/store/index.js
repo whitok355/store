@@ -2,27 +2,17 @@ import {createStore} from 'vuex';
 import categoryModule from './category';
 import goodsModule from './goods';
 import servicesModule from './services';
+import visibleModule from './visible';
 
 const store = createStore({
-    state: {
-        navVisible: true,
-        logVisible: true,
-        cartVisible: true,
-    },
-    mutations: {
-        changeVisible(state, value){
-            state[value] = !state[value]
-        },
-    },
-    actions: {
-        changeVisible({commit}, value){
-            commit('changeVisible', value)
-        },
-    },
+    state: {},
+    mutations: {},
+    actions: {},
     modules: {
         categoryModule,
         goodsModule,
-        servicesModule
+        servicesModule,
+        visibleModule
     }
 })
 export default store

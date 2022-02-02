@@ -1,14 +1,23 @@
+import storage from './storage'
+
 const goods ={
     actions:{
-        addGood({commit, state}, item){
-            if(item.quantity){
-                let find = state.cartGoods.find(el=> el.id === item.id)
-                commit('addQuantity', find)
+        addGood({ commit, state }, item){
+            if(state.cartGoods.length > 0){
+                let find = state.cartGoods.find(el => el.id === item.id)
+                if (find) {
+                    commit('addQuantity', item);
+                } else {
+                    commit('addGood', item);
+                }
             } else {
-                let newGood = Object.assign(item, {quantity: 1})
-                commit('addGood', newGood)
+                commit('addGood', item);
             }
+            commit('getCartGoods');
         },
+        getCartGoods({commit}){
+            commit('getCartGoods')
+        },  
         counter({commit}){
             commit('counter', 3 )
         },
@@ -17,34 +26,34 @@ const goods ={
             let filterArr = state.goods.filter((good) => regExp.test(good.category))
             commit('filtered', filterArr)
         },
-        removeGood({commit,state}, item){
-            let find = state.cartGoods.find(good => good.id === item.id)
-            commit('removeGood', find)
+        removeGood({ commit }, item){
+            commit('removeGood', item)
         }
     },
     mutations: {
         counter(state, value){
             state.count += value
         },
-        addGood(state, newGood){
-            state.cartGoods.push(newGood)
-            state.counterGoods++
-        },
-        addQuantity(state, find){
-            find.quantity++
-            state.counterGoods++
-        },
         filtered(state, filterArr){
-            console.log()
             state.filterGoods = filterArr
             state.count = 3
         },
-        removeGood(state, find){
-            state.cartGoods.splice(state.cartGoods.indexOf(find), 1)
-            state.counterGoods = 0
+        getCartGoods(state){
+            state.cartGoods = state.dataStorage.get('cartGoods', new Array())
+        },
+        addGood(state, item){
+            state.dataStorage.set('cartGoods', Object.assign(item, {quantity: 1}))
+        },
+        addQuantity(state, item){
+            state.cartGoods = state.dataStorage.change('cartGoods', item)
+        },
+        removeGood(state, item){            
+            state.dataStorage.remove('cartGoods', item)
+            state.cartGoods = state.dataStorage.get('cartGoods')
         }
     },
     state: {
+        dataStorage: storage,
         goods: [
             {
                 id: 0,
@@ -169,7 +178,6 @@ const goods ={
         ],
         filterGoods:[
         ],
-        counterGoods: 0,
         count: 3,
     },
     getters: {
