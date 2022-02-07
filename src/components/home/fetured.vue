@@ -4,10 +4,10 @@
       <h2>Fetured items</h2>
       <p>Shop for items based on what we featured in this week</p>
       <div class="fetured-list">
-        <good :items="goods" :text="'add in cart'" />
+        <good :items="browseMoreG('goods')" :text="'add in cart'" />
       </div>
       <div class="fetured-btn">
-        <buttons :text="'Browse more'" @click="counterActions" />
+        <buttons :text="'Browse more'" @click="browseMoreA" />
       </div>
     </div>
   </div>
@@ -15,25 +15,16 @@
 <script>
 import good from "../elements/good";
 import buttons from "../elements/buttons";
-import { mapState, mapActions } from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "fetured",
   components: { good, buttons },
   computed: {
-    ...mapState({
-      goods: state => state.goodsModule.goods.slice(0, state.goodsModule.count),
-      count: state => state.goodsModule.count
-    }),
-    browseMore() {
-      return this.goods.slice(0, this.count);
-    },
+    ...mapGetters(["browseMoreG"]),
   },
-  methods:{
-    ...mapActions(['counter']),
-    counterActions(){
-      this.counter()
-    }
-  }
+  methods: {
+    ...mapActions(["browseMoreA"]),
+  },
 };
 </script>
 <style lang="sass" scoped>

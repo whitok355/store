@@ -4,18 +4,22 @@
       <div class="cart">
         <h2>SHOPPING CART</h2>
         <div class="cart-list">
-          <div v-if="cartGoods.length < 1"><h3>Your cart is empty</h3></div>
+          <di v-if="storageData.cartGoods.length < 1"><h3>Your cart is empty</h3></di>
           <div class="wrapper-good-cart" v-else>
-            <goodCart :goods="cartGoods" />
+            <goodCart :goods="storageData.cartGoods" />
           </div>
         </div>
         <div class="cart-btn">
-          <buttons :text="'Clear shopping cart'" :classBtn="'grey-button'" />
+          <buttons
+            :text="'Clear shopping cart'"
+            :classBtn="'grey-button'"
+            @click="removeAllA('cartGoods')"
+          />
           <router-link to="/catalog/">
             <buttons
               :text="'Continue shopping'"
               :classBtn="'grey-button'"
-              @click="filteredActions('fetured')"
+              @click="filterA('fetured')"
             />
           </router-link>
         </div>
@@ -31,15 +35,10 @@ export default {
   name: "cart",
   components: { goodCart, buttons },
   computed: {
-    ...mapState({
-      cartGoods: (state) => state.goodsModule.cartGoods,
-    }),
+    ...mapState(["storageData"]),
   },
   methods: {
-    ...mapActions(["filtered"]),
-    filteredActions(category) {
-      this.filtered(category);
-    },
+    ...mapActions(["removeAllA", "filterA"]),
   },
 };
 </script>

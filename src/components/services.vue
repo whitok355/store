@@ -14,7 +14,6 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
 export default {
   name: "services",
   methods: {
@@ -22,11 +21,6 @@ export default {
       return require(`../assets/icons/${item.icon}.svg`);
     },
   },
-  computed:{
-    ...mapState({
-      services: state => state.servicesModule.services
-    })
-  }
 };
 </script>
 <style lang="sass" scoped>

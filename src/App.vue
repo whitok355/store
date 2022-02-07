@@ -17,14 +17,11 @@ import { mapActions } from "vuex";
 export default {
   name: "App",
   components: { top, services, subscribe, bottom },
-  beforeMount() {
-    this.getCartGoodsActions();
+  mounted() {
+    this.getLocalStorageA("cartGoods");
   },
   methods: {
-    ...mapActions(["getCartGoods"]),
-    getCartGoodsActions() {
-      this.getCartGoods();
-    },
+    ...mapActions(["getLocalStorageA"]),
   },
 };
 </script>

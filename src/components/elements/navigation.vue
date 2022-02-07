@@ -1,22 +1,28 @@
 <template>
   <div :class="visibleValue ? 'hidden' : 'navigation'">
-    <div class="close">
-      <close @click="changeVisibleActions('navVisible')" />
+    <div class="close" @click="changeVisibleA('navigation')">
+      <close />
     </div>
     <div class="content">
       <h2>NAVIGATION</h2>
       <ul>
-        <li>
-          <router-link @click="changeVisibleActions('navVisible')" to="/">Home</router-link>
+        <li @click="updateDisplayCounteA">
+          <router-link to="/" @click="changeVisibleA('navigation')">Home</router-link>
         </li>
         <li>
-          <router-link @click="changeVisibleActions('navVisible')" to="/login/">Account</router-link>
+          <router-link to="/login/" @click="changeVisibleA('navigation')"
+            >Account</router-link
+          >
         </li>
-        <li @click="filteredActions('fetured')">
-          <router-link @click="changeVisibleActions('navVisible')" to="/catalog/">Catalog</router-link>
+        <li @click="filterA('fetured')">
+          <router-link to="/catalog/" @click="changeVisibleA('navigation')"
+            >Catalog</router-link
+          >
         </li>
         <li>
-          <router-link @click="changeVisibleActions('navVisible')" to="/cart/">Cart</router-link>
+          <router-link to="/cart/" @click="changeVisibleA('navigation')"
+            >Cart</router-link
+          >
         </li>
       </ul>
     </div>
@@ -24,25 +30,18 @@
 </template>
 <script>
 import close from "../icons/close";
-import { mapActions, mapState } from 'vuex';
-
+import { mapState, mapActions } from "vuex";
 export default {
   name: "navigation",
   components: { close },
   methods: {
-    ...mapActions(['changeVisible', 'filtered']),
-    changeVisibleActions(value){
-      this.changeVisible(value)
-    },
-    filteredActions(category){
-      this.filtered(category)
-    }
+    ...mapActions(["filterA", "updateDisplayCounteA", "changeVisibleA"]),
   },
   computed: {
     ...mapState({
-      visibleValue: state => state.visibleModule.navVisible
-    })
-  }
+      visibleValue: (state) => state.visibleModule.navigation,
+    }),
+  },
 };
 </script>
 <style lang="sass" scoped>

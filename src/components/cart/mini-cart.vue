@@ -1,11 +1,9 @@
 <template>
   <div :class="visibleValue ? 'hidden' : 'cart-mini'">
-    <div class="close" @click="changeVisibleActions('cartVisible')">
-      close cart <close />
-    </div>
-    <div class="wrapper-mini-cart" v-if="this.cartGoods.length < 1">Your cart empty</div>
+    <div class="close" @click="changeVisibleA('miniCart')">close cart <close /></div>
+    <div class="wrapper-mini-cart" v-if="storageData.cartGoods < 1">Your cart empty</div>
     <div class="wrapper-mini-cart" v-else>
-      <goodCart :goods="cartGoods" />
+      <goodCart :goods="storageData.cartGoods" />
     </div>
   </div>
 </template>
@@ -13,20 +11,21 @@
 import goodCart from "../elements/goodCart";
 import close from "../icons/close";
 import { mapState, mapActions } from "vuex";
+
 export default {
   name: "cartMini",
   components: { goodCart, close },
-  methods: {
-    ...mapActions(["changeVisible"]),
-    changeVisibleActions(blockName) {
-      this.changeVisible(blockName);
-    },
+  mounted() {
+    console.log(this.storageData);
   },
   computed: {
     ...mapState({
-      visibleValue: (state) => state.visibleModule.cartVisible,
-      cartGoods: (state) => state.goodsModule.cartGoods,
+      visibleValue: (state) => state.visibleModule.miniCart,
+      storageData: (state) => state.storageData,
     }),
+  },
+  methods: {
+    ...mapActions(["changeVisibleA"]),
   },
 };
 </script>

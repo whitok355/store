@@ -3,11 +3,11 @@
     <div class="container">
       <div class="category">
         <h2>CATERGORY</h2>
-        <categoryList/>
+        <categoryList />
         <div class="catalog">
-          <good :items="browseMore" :text="'add in cart'" />
+          <good :items="browseMoreG('filterGoods')" :text="'add in cart'" />
         </div>
-        <buttons :text="'Browse more'" @click="counterActions" />
+        <buttons :text="'Browse more'" @click="browseMoreA" />
       </div>
       <router-view />
     </div>
@@ -17,25 +17,16 @@
 import categoryList from "./category-list";
 import good from "../elements/good";
 import buttons from "../elements/buttons";
-import { mapActions, mapState } from 'vuex'
 
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "category",
   components: { categoryList, good, buttons },
-  methods: {
-    ...mapActions(['counter']),
-    counterActions(){
-      this.counter()
-    },
-  },
   computed: {
-    ...mapState({
-      filterGoods: state=> state.goodsModule.filterGoods,
-      count: state=> state.goodsModule.count
-    }),
-    browseMore() {
-      return this.filterGoods.slice(0, this.count);
-    },
+    ...mapGetters(["browseMoreG"]),
+  },
+  methods: {
+    ...mapActions(["browseMoreA"]),
   },
 };
 </script>

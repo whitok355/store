@@ -1,24 +1,25 @@
 <template>
-  <div v-for="item of items" :key="item.title" class="good">
+  <div v-for="good of items" :key="good.title" class="good">
     <div class="good-show">
       <div class="shadow">
-        <div class="shadow-btn" @click="addGoodActions(item)">
+        <div class="shadow-btn" @click="addGoodA({ good, name: 'cartGoods' })">
           <iconCart :visible="true" />
           <p>{{ text }}</p>
         </div>
       </div>
-      <img :src="generationImage(item)" :alt="item.title" />
+      <img :src="generationImage(good)" :alt="good.title" />
     </div>
     <div class="good-content">
-      <h3 class="good-content__title">{{ item.title }}</h3>
-      <p>{{ item.discription }}</p>
-      <h5>{{ item.price }}</h5>
+      <h3 class="good-content__title">{{ good.title }}</h3>
+      <p>{{ good.discription }}</p>
+      <h5>{{ good.price }}</h5>
     </div>
   </div>
 </template>
 <script>
 import iconCart from "../icons/icon-cart";
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
+
 export default {
   name: "good",
   components: { iconCart },
@@ -31,17 +32,8 @@ export default {
       default: "Press",
     },
   },
-  data() {
-    return {
-      paramVisible: false,
-      goods: "",
-    };
-  },
   methods: {
-    ...mapActions(['addGood']),
-    addGoodActions(item){
-      this.addGood(item)
-    },
+    ...mapActions(["addGoodA"]),
     generationImage(good) {
       return require(`../../assets/pictures/goods/${good.id}.png`);
     },

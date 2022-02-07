@@ -1,5 +1,5 @@
 <template>
-  <router-link class="logo" to="/" @click="changeVisibleActions">
+  <router-link class="logo" to="/" @click="updateDisplayCounteA">
     <svg
       width="44"
       height="38"
@@ -33,10 +33,7 @@ import { mapActions } from "vuex";
 export default {
   name: "logo",
   methods: {
-    ...mapActions(["changeVisible"]),
-    changeVisibleActions() {
-      this.changeVisible();
-    },
+    ...mapActions(["updateDisplayCounteA"]),
   },
 };
 </script>

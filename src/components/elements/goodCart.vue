@@ -18,7 +18,7 @@
         </p>
       </div>
     </div>
-    <close @click="removeGoodActions(item)" />
+    <close @click="removeA({ item, name: 'cartGoods' })" />
   </div>
 </template>
 <script>
@@ -33,13 +33,10 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["removeGood"]),
-    removeGoodActions(item) {
-      this.removeGood(item);
-    },
     generationImage(item) {
       return require(`../../assets/pictures/goods/${item.id}.png`);
     },
+    ...mapActions(["removeA"]),
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="icon-cart">
     <div :class="visible ? 'hidden' : 'icon-cart__circle'">
-      {{ 0 }}
+      {{ storageData.count }}
     </div>
     <svg
       width="33"
@@ -18,6 +18,7 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
   name: "iconCart",
   props: {
@@ -25,6 +26,9 @@ export default {
       type: Boolean,
       dafault: true,
     },
+  },
+  computed: {
+    ...mapState(["storageData"]),
   },
 };
 </script>
