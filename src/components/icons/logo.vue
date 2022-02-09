@@ -1,5 +1,5 @@
 <template>
-  <router-link class="logo" to="/" @click="updateDisplayCounteA">
+  <router-link class="logo" to="/store/" @click="updateDisplayCounteA">
     <svg
       width="44"
       height="38"

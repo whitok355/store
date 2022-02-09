@@ -7,7 +7,9 @@
       <h2>NAVIGATION</h2>
       <ul>
         <li @click="updateDisplayCounteA">
-          <router-link to="/" @click="changeVisibleA('navigation')">Home</router-link>
+          <router-link to="/store/" @click="changeVisibleA('navigation')"
+            >Home</router-link
+          >
         </li>
         <li>
           <router-link to="/login/" @click="changeVisibleA('navigation')"
