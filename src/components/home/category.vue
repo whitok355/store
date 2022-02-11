@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="category">
-      <template v-for="(item, index) of category" :key="index">
+      <template v-for="(item, index) of categorys" :key="index">
         <router-link to="/catalog/" class="category-box" @click="filt(item.title)">
           <img :src="imageGenerator(item)" :alt="item.title" />
           <div class="category-box-content">
@@ -14,12 +14,18 @@
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
   name: "category",
   methods: {
     imageGenerator(item) {
       return require(`../../assets/pictures/category/${item.title}.png`);
     },
+  },
+  computed: {
+    ...mapState({
+      categorys: (state) => state.categoryModule.category,
+    }),
   },
 };
 </script>

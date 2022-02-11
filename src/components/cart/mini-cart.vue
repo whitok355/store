@@ -15,9 +15,6 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "cartMini",
   components: { goodCart, close },
-  mounted() {
-    console.log(this.storageData);
-  },
   computed: {
     ...mapState({
       visibleValue: (state) => state.visibleModule.miniCart,

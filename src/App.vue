@@ -2,7 +2,7 @@
   <div class="wrapper">
     <top />
     <router-view />
-    <services id="Services" />
+    <services id="services" :services="services" />
     <subscribe id="Subscribe" />
     <bottom />
   </div>
@@ -13,7 +13,7 @@ import top from "./components/top";
 import services from "./components/services";
 import subscribe from "./components/subscribe";
 import bottom from "./components/footer/footer";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   name: "App",
   components: { top, services, subscribe, bottom },
@@ -22,6 +22,11 @@ export default {
   },
   methods: {
     ...mapActions(["getLocalStorageA"]),
+  },
+  computed: {
+    ...mapState({
+      services: (state) => state.servicesModule.services,
+    }),
   },
 };
 </script>

@@ -1,6 +1,10 @@
+'use strict'
+
 import { createStore } from 'vuex'
 import visibleModule from './visible'
 import storage from './storage'
+import servicesModule from './services'
+import categoryModule from './category'
 
 const store = createStore({
     state:{
@@ -184,7 +188,9 @@ const store = createStore({
     },
     modules:{
         visibleModule,
-        storage
+        storage,
+        servicesModule,
+        categoryModule
     }
 })
 

@@ -1,3 +1,5 @@
+'use strict'
+
 const visibleModule = {
     state:{
         navigation: true,

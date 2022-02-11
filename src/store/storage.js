@@ -1,3 +1,5 @@
+'use strict'
+
 const storage = {
     get(name){
         if(localStorage[name]){

@@ -16,6 +16,11 @@
 <script>
 export default {
   name: "services",
+  props: {
+    services: {
+      type: Array,
+    },
+  },
   methods: {
     generationUrl(item) {
       return require(`../assets/icons/${item.icon}.svg`);

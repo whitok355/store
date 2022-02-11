@@ -17,14 +17,9 @@ import buttons from "../elements/buttons";
 export default {
   name: "login",
   components: { buttons },
-  methods: {
-    changeVisible(value) {
-      this.$store.dispatch("changeVisible", value);
-    },
-  },
 };
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 .login
   display: flex
   flex-direction: column
@@ -42,7 +37,7 @@ export default {
 .login-form input
   padding: 5px 10px
   margin-top: 20px
-.button
+button
   margin-top: 20px
   padding: 5px 20px !important
 @include tablet
